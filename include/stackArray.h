@@ -3,18 +3,55 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-#define MAX 5
+#define MAX 7 // Macro definition indicating the MAX size of the Stack
 
+// Structure definition
 typedef struct Stack{
     char elem[MAX];
     int top;
 } Stack;
 
 void initialize(Stack *S);
+
+/**
+ * @brief push or add an element to the Stack
+ * 
+ * @param S a pointer to a struct
+ * @param ch element to add to the Stack
+ * 
+ */
 void push(Stack *S, char elem);
+
+/**
+ * @brief Remove the top of the stack
+ * 
+ * @param S a pointer to a struct
+ * 
+ */
 void pop(Stack *S);
+
+/**
+ * @brief display or print the elements of the stack
+ * 
+ * @param S a Stack structure
+ * 
+ */
 void display(Stack S);
+
+/**
+ * @brief Checks if the Stack is full based on the macro definition returns 1 if true, else 0 false
+ * 
+ * @param S a Stack structure
+ * 
+ */
 bool isFull(Stack S);
+
+/**
+ * @brief Checks if the Stack is empty returns 1 if true, else 0 false
+ * 
+ * @param S a Stack structure
+ * 
+ */
 bool isEmpty(Stack S);
 
 void initialize(Stack *S) {
