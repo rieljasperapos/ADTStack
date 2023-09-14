@@ -5,9 +5,23 @@
 #include <stdio.h>
 #define MAX 7 // Macro definition indicating the MAX size of the Stack
 
-// Structure definition
-typedef struct Stack{
+/**
+ * @brief Structure definition
+ *
+*/
+typedef struct Stack {
+    /**
+     * @brief The array to store elements in the Stack
+     * 
+     * It has a maximum size of MAX, which determines the capacity of the stack.
+    */
     char elem[MAX];
+
+    /**
+     * @brief The top of the stack
+     * 
+     * This member variable holds the index of the top element in the Stack
+    */
     int top;
 } Stack;
 
