@@ -5,7 +5,7 @@
 #include <stdio.h>
 #define MAX 5
 
-typedef struct {
+typedef struct Stack{
     char elem[MAX];
     int top;
 } Stack;

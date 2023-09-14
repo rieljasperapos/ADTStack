@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../include/stackLinked.h"
+#include "../include/stackArray.h"
 
 int main(int argc, char const *argv[])
 {
@@ -12,14 +12,14 @@ int main(int argc, char const *argv[])
     push(&myStack, 'C');
     push(&myStack, 'S');
     push(&myStack, 'U');
-    pop(&myStack);
-    pop(&myStack);
-    pop(&myStack);
-    pop(&myStack);
-    pop(&myStack);
-    pop(&myStack);
-    pop(&myStack);
-    pop(&myStack);
+    // pop(&myStack);
+    // pop(&myStack);
+    // pop(&myStack);
+    // pop(&myStack);
+    // pop(&myStack);
+    // pop(&myStack);
+    // pop(&myStack);
+    // pop(&myStack);
     display(myStack);
 
     return 0;
