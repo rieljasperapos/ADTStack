@@ -11,6 +11,12 @@ typedef struct Stack{
     int top;
 } Stack;
 
+/**
+ * @brief create and initialize the Stack data structure
+ * 
+ * @param S a pointer to a struct
+ * 
+*/
 void initialize(Stack *S);
 
 /**
