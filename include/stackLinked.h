@@ -4,15 +4,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Structure definitions
+/**
+ * @brief Structure definition
+ *
+*/
 typedef struct node {
 	char elem;
 	struct node *link;
 } *Stack;
 
+/**
+ * @brief create and initialize the Stack data structure
+ * 
+ * @param S a pointer to a struct
+ * 
+*/
 void initialize(Stack *S);
+
+/**
+ * @brief push or add an element to the Stack
+ * 
+ * @param S a pointer to a struct
+ * @param ch element to add to the Stack
+ * 
+ */
 void push(Stack *S, char elem);
+
+/**
+ * @brief Remove the top of the stack
+ * 
+ * @param S a pointer to a struct
+ * 
+ */
 void pop(Stack *S);
+
+/**
+ * @brief display or print the elements of the stack
+ * 
+ * @param S a Stack structure
+ * 
+ */
 void display(Stack S);
 
 void initialize(Stack *S) {
