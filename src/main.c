@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "../include/stackArray.h"
+// #include "../include/stackArray.h"
+#include "../include/stackLinked.h"
 
 int main(int argc, char const *argv[])
 {
