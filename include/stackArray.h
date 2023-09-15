@@ -10,18 +10,7 @@
  *
 */
 typedef struct Stack {
-    /**
-     * @brief The array to store elements in the Stack
-     * 
-     * It has a maximum size of MAX, which determines the capacity of the stack.
-    */
     char elem[MAX];
-
-    /**
-     * @brief The top of the stack
-     * 
-     * This member variable holds the index of the top element in the Stack
-    */
     int top;
 } Stack;
 
@@ -62,6 +51,8 @@ void display(Stack S);
  * @brief Checks if the Stack is full based on the macro definition returns 1 if true, else 0 false
  * 
  * @param S a Stack structure
+ * @return true
+ * @return false
  * 
  */
 bool isFull(Stack S);
@@ -70,6 +61,8 @@ bool isFull(Stack S);
  * @brief Checks if the Stack is empty returns 1 if true, else 0 false
  * 
  * @param S a Stack structure
+ * @return true
+ * @return false
  * 
  */
 bool isEmpty(Stack S);
