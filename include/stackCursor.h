@@ -4,6 +4,7 @@
 #define MAX 7
 
 #include <stdbool.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -18,7 +19,7 @@ typedef struct {
 } virtualHeap;
 
 typedef struct {
-    virtualHeap *VH;
+    virtualHeap VH;
     int top;
     int count;
 } Stack;
@@ -27,7 +28,7 @@ void initialize(Stack *S);
 void deallocSpace(virtualHeap *VH, int index);
 int allocSpace(virtualHeap *VH);
 void push(Stack *S, char elem);
-void pop(Stack *S);
+char pop(Stack *S);
 void display(Stack S);
 char top(Stack S);
 bool isEmpty(Stack S);
@@ -35,17 +36,20 @@ bool isFull(Stack S);
 void makeNull(Stack *S);
 
 void initialize(Stack *S) {
+    // S->VH = (virtualHeap *)malloc(sizeof(virtualHeap));
     // initialize the virtual heap
     int indx;
     for (indx = 0; indx < MAX; indx++) {
-        S->VH->datas[indx].elem = 'X';
-        S->VH->datas[indx].link = indx - 1;
+        S->VH.datas[indx].elem = 'X';
+        S->VH.datas[indx].link = indx - 1;
     }
 
     // set the available index
-    S->VH->avail = MAX - 1;
+    S->VH.avail = MAX - 1;
+
     // set the top to -1
     S->top = -1;
+
     // counter to keep track of how many elements inside the Stack
     S->count = 0;
 }
@@ -64,15 +68,15 @@ bool isFull(Stack S) {
 }
 
 bool isEmpty(Stack S) {
-    return S.count == 0 ? 1 : 0;
+    return S.top == -1 ? 1 : 0;
 }
 
 void push(Stack *S, char elem) {
     // implement the inserting like linked list
-    int newIndex = allocSpace(S->VH);
+    int newIndex = allocSpace(&S->VH);
     if (newIndex != -1 && (!isFull(*S))) {
-        S->VH->datas[newIndex].elem = elem;
-        S->VH->datas[newIndex].link = S->top;
+        S->VH.datas[newIndex].elem = elem;
+        S->VH.datas[newIndex].link = S->top;
         S->top = newIndex;
         S->count++;
     } else {
@@ -80,19 +84,20 @@ void push(Stack *S, char elem) {
     }
 }
 
-void pop(Stack *S) {
-    if (isEmpty(*S)) {
-        printf("The stack is empty cannot pop!\n");
-    } else {
-        S->top--;
+char pop(Stack *S) {
+    if (S->top != -1) {
+        int temp = S->top;
+        S->top = S->VH.datas[S->top].link;
+        deallocSpace(&S->VH, temp);
         S->count--;
+        return S->VH.datas[temp].elem;
     }
 }
 
 void display(Stack S) {
     while (S.top != -1) {
-        printf("%c ", S.VH->datas[S.top].elem);
-        S.top = S.VH->datas[S.top].link;
+        printf("%c ", S.VH.datas[S.top].elem);
+        S.top = S.VH.datas[S.top].link;
     }
 }
 
@@ -106,15 +111,15 @@ void deallocSpace(virtualHeap *VH, int index) {
 void makeNull(Stack *S) {
     while (S->top != -1) {
         int index = S->top;
-        S->top = S->VH->datas[S->top].link;
-        deallocSpace(S->VH, index);
+        S->top = S->VH.datas[S->top].link;
+        deallocSpace(&S->VH, index);
     }
     S->count = 0;
     S->top = -1;
 }
 
 char top(Stack S) {
-    return S.VH->datas[S.top].elem;
+    return S.VH.datas[S.top].elem;
 }
 
 #endif

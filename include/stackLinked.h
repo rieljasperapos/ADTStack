@@ -1,8 +1,13 @@
 #ifndef STACK_H
 #define STACK_H
 
+#define MAX 7
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+
+int count;
 
 /**
  * @brief Structure definition
@@ -36,7 +41,7 @@ void push(Stack *S, char elem);
  * @param S a pointer to a struct
  * 
  */
-void pop(Stack *S);
+char pop(Stack *S);
 
 /**
  * @brief display or print the elements of the stack
@@ -47,10 +52,14 @@ void pop(Stack *S);
 void display(Stack S);
 void makeNull(Stack *S);
 
+bool isEmpty(Stack S);
+bool isFull(Stack S);
+
 char top(Stack S);
 
 void initialize(Stack *S) {
 	*S = NULL;
+	count = 0;
 }
 
 void push(Stack *S, char elem) {
@@ -59,16 +68,19 @@ void push(Stack *S, char elem) {
 		newNode->elem = elem;
 		newNode->link = *S;
 		*S = newNode;
+		count++;
 	}
 }
 
-void pop(Stack *S) {
+char pop(Stack *S) {
     if (*S == NULL) {
         printf("EMPTY\n");
     }
 	Stack temp;
 	temp = *S;
 	*S = temp->link;
+	count--;
+	return temp->elem;
 }
 
 void display(Stack S) {
@@ -84,6 +96,14 @@ void makeNull(Stack *S) {
 
 char top(Stack S) {
 	return S->elem;
+}
+
+bool isEmpty(Stack S) {
+	return S == NULL ? 1 : 0;
+}
+
+bool isFull(Stack S) {
+	return (count == MAX) ? 1 : 0;
 }
 
 

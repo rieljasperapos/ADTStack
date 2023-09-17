@@ -37,7 +37,7 @@ void push(Stack *S, char elem);
  * @param S a pointer to a struct
  * 
  */
-void pop(Stack *S);
+char pop(Stack *S);
 
 /**
  * @brief display or print the elements of the stack
@@ -91,11 +91,11 @@ void push(Stack *S, char elem) {
     }
 }
 
-void pop(Stack *S) {
+char pop(Stack *S) {
     if (isEmpty(*S)) {
         printf("ARRAY IS EMPTY CANNOT POP\n");
     } else {
-        S->top--;
+        return S->elem[S->top--];
     }
 }
 

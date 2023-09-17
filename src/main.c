@@ -3,7 +3,7 @@
 // #include "../include/stackLinked.h"
 #include "../include/stackCursor.h"
 
-void insertBottom(Stack *S);
+void insertBottom(Stack *S, char elem);
 
 int main(int argc, char const *argv[])
 {
@@ -37,11 +37,30 @@ int main(int argc, char const *argv[])
     printf("\nAfter calling make null\n");
     display(myStack);
     printf("\nTOP: %c\n", top(myStack));
+    insertBottom(&myStack, 'J');
+    display(myStack);
     
-
     return 0;
 }
 
-void insertBottom(Stack *S) {
+void insertBottom(Stack *S, char elem) {
+    if (isFull(*S)) {
+        printf("STACK IS FULL CANNOT INSERT\n"); // Stack is full, insertion not possible.
+    }
+    
+    Stack tempStack;
+    initialize(&tempStack);
 
+    // Pop elements from the original stack and push them onto the tempStack.
+    while (!isEmpty(*S)) {
+        push(&tempStack, pop(S));
+    }
+
+    // Push the new item onto the original stack.
+    push(S, elem);
+
+    // Pop elements from the tempStack and push them back onto the original stack.
+    while (!isEmpty(tempStack)) {
+        push(S, pop(&tempStack));
+    }
 }
