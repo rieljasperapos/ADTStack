@@ -67,6 +67,10 @@ bool isFull(Stack S);
  */
 bool isEmpty(Stack S);
 
+void makeNull(Stack *S);
+
+char top(Stack S);
+
 void initialize(Stack *S) {
     S->top = -1;
 }
@@ -100,6 +104,14 @@ void display(Stack S) {
     for (indx = S.top; indx >= 0; indx--) {
         printf("%c ", S.elem[indx]);
     }
+}
+
+void makeNull(Stack *S) {
+    S->top = -1;
+}
+
+char top(Stack S) {
+    return S.elem[S.top];
 }
 
 #endif

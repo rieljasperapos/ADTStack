@@ -45,6 +45,9 @@ void pop(Stack *S);
  * 
  */
 void display(Stack S);
+void makeNull(Stack *S);
+
+char top(Stack S);
 
 void initialize(Stack *S) {
 	*S = NULL;
@@ -74,5 +77,15 @@ void display(Stack S) {
 		S = S->link;
 	}
 }
+
+void makeNull(Stack *S) {
+	*S = NULL;
+}
+
+char top(Stack S) {
+	return S->elem;
+}
+
+
 
 #endif

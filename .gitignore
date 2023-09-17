@@ -2,7 +2,16 @@
 
 **/.lib
 
-**/.output
+**/output
 
 *.exe
+
+**/html
+
+**/latex
+
+*.class
+
+*myconfig
+
 
