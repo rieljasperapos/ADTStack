@@ -47,7 +47,7 @@ void insertBottom(Stack *S, char elem) {
     if (isFull(*S)) {
         printf("STACK IS FULL CANNOT INSERT\n"); // Stack is full, insertion not possible.
     }
-    
+
     Stack tempStack;
     initialize(&tempStack);
 
@@ -63,4 +63,6 @@ void insertBottom(Stack *S, char elem) {
     while (!isEmpty(tempStack)) {
         push(S, pop(&tempStack));
     }
+
+    printf("Insert %c at the bottom of the stack\n", elem);
 }
